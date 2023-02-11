@@ -1,0 +1,1 @@
+This is a sample text written to a file using the PrintWriter class.
