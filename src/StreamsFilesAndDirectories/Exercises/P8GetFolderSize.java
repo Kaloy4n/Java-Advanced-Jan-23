@@ -1,7 +1,6 @@
 package StreamsFilesAndDirectories.Exercises;
 
 import java.io.File;
-import java.util.Objects;
 
 public class P8GetFolderSize {
     public static void main(String[] args) {
@@ -13,11 +12,14 @@ public class P8GetFolderSize {
 
     private static long folderSize(File directory) {
         long length = 0;
-        for (File file : Objects.requireNonNull(directory.listFiles())) {
-            if (file.isFile()) {
-                length += file.length();
-            } else {
-                length += folderSize(file);
+        File[] allFilesInFolder = directory.listFiles();
+        if (allFilesInFolder != null) {
+            for (File file : allFilesInFolder) {
+                if (file.isFile()) {
+                    length += file.length();
+                } else {
+                    length += folderSize(file);
+                }
             }
         }
         return length;
