@@ -15,14 +15,12 @@ public class P2WriteToFile {
         OutputStream outputStream = new FileOutputStream(outputPath);
 
         try (InputStream inputStream = new FileInputStream(inputPath)) {
-            int readByte = inputStream.read();
-            while (readByte >= 0) {
+            int readByte;
+            while ((readByte = inputStream.read()) >= 0) {
 
                 if (!punctuation.contains((char)readByte)) {
                     outputStream.write(readByte);
                 }
-
-                readByte = inputStream.read();
             }
 
         } catch (IOException e) {
