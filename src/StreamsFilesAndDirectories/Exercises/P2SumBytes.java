@@ -13,8 +13,6 @@ public class P2SumBytes {
 
         /* List<String> allLines = Files.readAllLines(Path.of(pathToFile));
 
-
-
         //2 Print the sum
         for (String line : allLines) {
             for (char symbol : line.toCharArray()) {
@@ -25,6 +23,7 @@ public class P2SumBytes {
 
         //2nd way
         byte[] allBytes = Files.readAllBytes(Path.of(pathToFile));
+        //.readAllBytes method captures /n and /r
         //byte -> -127 to 128
         //sbyte -> 0 to 256
         for (byte ascii : allBytes) {
