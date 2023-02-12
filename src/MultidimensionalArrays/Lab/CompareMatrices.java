@@ -57,7 +57,7 @@ public class CompareMatrices {
         if (areEqual) {
             System.out.println("equal");
         } else {
-            System.out.println(" not equal");
+            System.out.println("not equal");
         }
     }
 }
