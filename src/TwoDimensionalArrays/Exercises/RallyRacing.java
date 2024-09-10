@@ -1,4 +1,4 @@
-package MultidimensionalArrays.Exercises;
+package TwoDimensionalArrays.Exercises;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +34,7 @@ public class RallyRacing {
         // Commence movements
         String direction = scanner.nextLine();
 
+        label:
         while (!direction.equals("End")) {
             switch (direction) {
                 case "left" -> carCurrentCol--;
@@ -44,21 +45,24 @@ public class RallyRacing {
             // currentRow, currentCol -> coordinate of the car position
             String movedPlace = track[carCurrentRow][carCurrentCol];
 
-            if (movedPlace.equals(".")) {
-                km += 10;
-            } else if (movedPlace.equals("F")) {
-                System.out.printf("Racing car %s finished the stage!%n", carNumber);
-                km += 10;
-                break;
-            } else if (movedPlace.equals("T")) {
-                // When reaching a tunnel we jump from the 1st to the 2nd tunnel
-                // Coordinates of the car => coordinates of the 2nd tunnel
-                carCurrentRow = tunnelCoordinates.get(2);
-                carCurrentCol = tunnelCoordinates.get(3);
-                km += 30;
-                // Replace the tunnels with a dot because we've already passed through
-                track[tunnelCoordinates.get(0)][tunnelCoordinates.get(1)] = ".";
-                track[tunnelCoordinates.get(2)][tunnelCoordinates.get(3)] = ".";
+            switch (movedPlace) {
+                case ".":
+                    km += 10;
+                    break;
+                case "F":
+                    System.out.printf("Racing car %s finished the stage!%n", carNumber);
+                    km += 10;
+                    break label;
+                case "T":
+                    // When reaching a tunnel we jump from the 1st to the 2nd tunnel
+                    // Coordinates of the car => coordinates of the 2nd tunnel
+                    carCurrentRow = tunnelCoordinates.get(2);
+                    carCurrentCol = tunnelCoordinates.get(3);
+                    km += 30;
+                    // Replace the tunnels with a dot because we've already passed through
+                    track[tunnelCoordinates.get(0)][tunnelCoordinates.get(1)] = ".";
+                    track[tunnelCoordinates.get(2)][tunnelCoordinates.get(3)] = ".";
+                    break;
             }
             direction = scanner.nextLine();
         }
@@ -93,9 +97,9 @@ public class RallyRacing {
     }
 
     private static void printMatrix(String[][] matrix) {
-        for (int row = 0; row < matrix.length; row++) {
+        for (String[] rowElem : matrix) {
             for (int col = 0; col < matrix[0].length; col++) {
-                System.out.print(matrix[row][col]);
+                System.out.print(rowElem[col]);
             }
             System.out.println();
         }

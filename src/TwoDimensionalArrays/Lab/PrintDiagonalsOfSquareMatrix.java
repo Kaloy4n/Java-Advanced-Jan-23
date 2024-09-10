@@ -1,4 +1,4 @@
-package MultidimensionalArrays.Lab;
+package TwoDimensionalArrays.Lab;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -18,7 +18,7 @@ public class PrintDiagonalsOfSquareMatrix {
 //            }
 
             int[] currentRow = Arrays.stream(columnData)
-                    .mapToInt(elem -> Integer.parseInt(elem))
+                    .mapToInt(Integer::parseInt)
                     .toArray();
 
             matrix[row] = currentRow;

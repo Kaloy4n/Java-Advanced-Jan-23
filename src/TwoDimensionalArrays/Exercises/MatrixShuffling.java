@@ -1,4 +1,4 @@
-package MultidimensionalArrays.Exercises;
+package TwoDimensionalArrays.Exercises;
 
 import java.util.Scanner;
 
@@ -63,9 +63,9 @@ public class MatrixShuffling {
     }
 
     private static void printMatrix(String[][] matrix) {
-        for (int row = 0; row < matrix.length; row++) {
+        for (String[] rowElem : matrix) {
             for (int col = 0; col < matrix[0].length; col++) {
-                System.out.print(matrix[row][col] + " ");
+                System.out.print(rowElem[col] + " ");
             }
             System.out.println();
         }
