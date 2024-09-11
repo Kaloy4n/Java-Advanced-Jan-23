@@ -26,7 +26,7 @@ public class BasicQueueOperations {
         }
 
         //CHECK if element is present
-        if(queue.contains(x)) {
+        if (queue.contains(x)) {
             System.out.println("true");
         } else {
             if (queue.isEmpty()) {

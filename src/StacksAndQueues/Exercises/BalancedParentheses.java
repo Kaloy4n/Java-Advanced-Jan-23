@@ -24,7 +24,7 @@ public class BalancedParentheses {
                     //closed ), ], } -> add to queue i.e. FIFO
                     closedBracketsQueue.offer(symbol);
             }
-            if(!openBracketsStack.isEmpty() && !closedBracketsQueue.isEmpty()) {
+            if (!openBracketsStack.isEmpty() && !closedBracketsQueue.isEmpty()) {
                 if (openBracketsStack.peek() == '(' && closedBracketsQueue.peek() == ')'
                         || openBracketsStack.peek() == '[' && closedBracketsQueue.peek() == ']'
                         || openBracketsStack.peek() == '{' && closedBracketsQueue.peek() == '}') {
@@ -39,7 +39,7 @@ public class BalancedParentheses {
             }
         }
 
-        if(areSymbolsBalanced) {
+        if (areSymbolsBalanced) {
             System.out.println("YES");
         } else {
             System.out.println("NO");
