@@ -5,15 +5,23 @@ import java.util.*;
 public class ReverseNumbersWithAStack {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] numbersAsStrings = scanner.nextLine().split("\\s+");
-        
+
         Deque<Integer> stack = new ArrayDeque<>();
 
-        for (int i = 0; i < numbersAsStrings.length; i++) {
-            stack.push(Integer.parseInt(numbersAsStrings[i]));
-        }
+//       String[] numbersAsStrings = scanner.nextLine().split("\\s+");
+//        for (int i = 0; i < numbersAsStrings.length; i++) {
+//            stack.push(Integer.parseInt(numbersAsStrings[i]));
+//        }
 
-        for (Integer integer : stack) {
+        Arrays.stream(scanner.nextLine().split("\\s+"))
+                .map(Integer::parseInt)
+                .forEach(stack::push);
+
+//        for (Integer integer : stack) {
+//            System.out.print(stack.pop() + " ");
+//        }
+
+        while (!stack.isEmpty()) {
             System.out.print(stack.pop() + " ");
         }
     }
