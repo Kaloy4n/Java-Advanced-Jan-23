@@ -31,7 +31,7 @@ public class BasicStackOperations {
         }
 
         //CHECK if element is present
-        if(stack.contains(x)) {
+        if (stack.contains(x)) {
             System.out.println("true");
         } else {
             if (stack.isEmpty()) {
