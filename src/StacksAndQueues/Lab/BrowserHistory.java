@@ -7,24 +7,24 @@ import java.util.Scanner;
 public class BrowserHistory {
     public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    Deque<String> history = new ArrayDeque<>();
+    Deque<String> browserHistory = new ArrayDeque<>();
 
     String currentInput = scanner.nextLine();
 
     while(!currentInput.equals("Home")) {
         if (!currentInput.isEmpty()) {
             if (currentInput.equals("back")) {
-                if (history.size() == 1 || history.isEmpty()) {
+                if (browserHistory.size() == 1 || browserHistory.isEmpty()) {
                     System.out.println("no previous URLs");
                     currentInput = scanner.nextLine();
                     continue;
                     }
 
-                history.pop();
+                browserHistory.pop();
                 } else {
-                    history.push(currentInput);
+                browserHistory.push(currentInput);
                 }
-                System.out.println((history.peek()));
+                System.out.println((browserHistory.peek()));
                 currentInput = scanner.nextLine();
             }
         }
