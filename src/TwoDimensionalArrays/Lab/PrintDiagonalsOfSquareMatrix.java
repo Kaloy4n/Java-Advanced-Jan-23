@@ -11,17 +11,17 @@ public class PrintDiagonalsOfSquareMatrix {
 
         for (int row = 0; row < size; row++) {
 
-            String[] columnData = scanner.nextLine().split(" ");
+            String[] currentRowAsString = scanner.nextLine().split(" ");
 //            int[] currentRow = new int[size]
-//            for (int col = 0; col < columnData.length; col++) {
-//                currentRow[col] = Integer.parseInt(columnData[col];
+//            for (int col = 0; col < currentRowAsString.length; col++) {
+//                currentRow[col] = Integer.parseInt(currentRowAsString[col];
 //            }
 
-            int[] currentRow = Arrays.stream(columnData)
+            int[] currentRowAsInt = Arrays.stream(currentRowAsString)
                     .mapToInt(Integer::parseInt)
                     .toArray();
 
-            matrix[row] = currentRow;
+            matrix[row] = currentRowAsInt;
         }
 
         for (int row = 0; row < matrix.length; row++) {
@@ -33,9 +33,11 @@ public class PrintDiagonalsOfSquareMatrix {
         }
         System.out.println();
 
-//        for (int row = size - 1, col = 0; col < matrix.length; row--, col++) {
-//            System.out.print(matrix[row][col] + " ");
-//        }
+        /*
+        for (int row = size - 1, col = 0; col < matrix.length; row--, col++) {
+            System.out.print(matrix[row][col] + " ");
+        }
+        */
 
         for (int i = matrix.length; i > 0; i--) {
             System.out.print(matrix[i - 1][matrix.length - i] + " ");

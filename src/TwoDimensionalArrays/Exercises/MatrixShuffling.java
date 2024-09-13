@@ -62,7 +62,7 @@ public class MatrixShuffling {
         return row1 >= 0 && row1 < rows && row2 >= 0 && row2 < rows && col1 >= 0 && col1 < cols && col2 >= 0 && col2 < cols;
     }
 
-    private static void printMatrix(String[][] matrix) {
+    static void printMatrix(String[][] matrix) {
         for (String[] rowElem : matrix) {
             for (int col = 0; col < matrix[0].length; col++) {
                 System.out.print(rowElem[col] + " ");

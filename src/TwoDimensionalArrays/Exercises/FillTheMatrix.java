@@ -11,14 +11,15 @@ public class FillTheMatrix {
 
         int[][] matrix = new int[n][n];
 
-        if (pattern.equals("A")) {
-            // pattern A -> by columns
-            fillMatrixPatternA(matrix);
-        } else if (pattern.equals("B")) {
-            // pattern B
-            // if column is even then rows are filled from bottom to top element.
-            // if column is odd then rows are filled from top to bottom element.
-            fillMatrixPatternB(matrix);
+        switch (pattern) {
+            case "A" ->
+                // pattern A -> by columns
+                    fillMatrixPatternA(matrix);
+            case "B" ->
+                // pattern B
+                // if column index is even then rows are filled from top to bottom element.
+                // if column index is odd then rows are filled from bottom to top element.
+                    fillMatrixPatternB(matrix);
         }
         printMatrix(matrix);
     }
@@ -27,8 +28,7 @@ public class FillTheMatrix {
         int startNumber = 1;
         for (int col = 0; col < matrix[0].length; col++) {
             for (int row = 0; row < matrix.length; row++) {
-                matrix[row][col] = startNumber;
-                startNumber++;
+                matrix[row][col] = startNumber++;
             }
         }
     }
@@ -36,15 +36,13 @@ public class FillTheMatrix {
     private static void fillMatrixPatternB(int[][] matrix) {
         int startNumber = 1;
         for (int col = 0; col < matrix[0].length; col++) {
-            if ((col + 1) % 2 == 0) {
-                for (int row = matrix.length - 1; row >= 0 ; row--) {
-                    matrix[row][col] = startNumber;
-                    startNumber++;
+            if ((col) % 2 == 0) {
+                for (int row = 0; row <= matrix.length - 1; row++) {
+                    matrix[row][col] = startNumber++;
                 }
             } else {
-                for (int row = 0; row <= matrix.length - 1; row++) {
-                    matrix[row][col] = startNumber;
-                    startNumber++;
+                for (int row = matrix.length - 1; row >= 0 ; row--) {
+                    matrix[row][col] = startNumber++;
                 }
             }
         }
@@ -59,4 +57,3 @@ public class FillTheMatrix {
         }
     }
 }
-

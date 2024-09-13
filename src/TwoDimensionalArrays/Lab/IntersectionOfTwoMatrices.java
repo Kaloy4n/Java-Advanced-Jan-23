@@ -28,10 +28,10 @@ public class IntersectionOfTwoMatrices {
     private static char[][] matrixReader (int rows, int cols){
         char[][] matrix = new char[rows][cols];
         for (int row = 0; row < rows; row++) {
-            String[] columnData = scanner.nextLine().split("\\s+");
+            String[] columnCells = scanner.nextLine().split("\\s+");
 
             for (int col = 0; col < cols; col++) {
-                matrix[row][col] = columnData[col].charAt(0);
+                matrix[row][col] = columnCells[col].charAt(0);
             }
         }
         return matrix;
