@@ -36,8 +36,8 @@ public class DiagonalDifference {
         int sum = 0;
         for (int row = 0; row < matrix.length; row++) {
             for (int col = matrix[0].length - 1; col >= 0; col--) {
-                if(row == matrix.length - 1 - col) {
-                    //row == matrix.length - row - 1 for square matrix
+                if (row == matrix.length - 1 - col) {
+                    //row == matrix.length - 1  - row  for square matrix
                     sum += matrix[row][col];
                 }
             }
