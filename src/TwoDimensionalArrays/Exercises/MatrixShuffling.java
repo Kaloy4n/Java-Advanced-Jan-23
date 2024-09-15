@@ -3,7 +3,7 @@ package TwoDimensionalArrays.Exercises;
 import java.util.Scanner;
 
 public class MatrixShuffling {
-     static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
         String dimensionsInput = scanner.nextLine();

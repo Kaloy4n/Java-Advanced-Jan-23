@@ -3,7 +3,7 @@ package StacksAndQueues.Lab;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class DecimalFractionalToBinaryConverter {
+public class DecimalFractionToBinaryConverter {
     public static void main(String[] args) {
         /*
         * Not all fractions can be exactly converted to binary: only if the denominator is a power of 2, the binary fraction will be finite.
