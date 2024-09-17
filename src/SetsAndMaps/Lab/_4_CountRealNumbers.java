@@ -13,14 +13,17 @@ public class _4_CountRealNumbers {
         String[] numbers = scanner.nextLine().split(" ");
 
         for (String number : numbers) {
-            double currentNum = Double.parseDouble(number);
+//            double currentNum = Double.parseDouble(number);
+//            if (occurrences.containsKey(currentNum)) {
+//                Integer count = occurrences.get(currentNum);
+//                occurrences.put(currentNum, count + 1);
+//            } else {
+//                occurrences.put(currentNum, 1);
+//            }
 
-            if(occurrences.containsKey(currentNum)) {
-                Integer count = occurrences.get(currentNum);
-                occurrences.put(currentNum, count + 1);
-            } else {
-                occurrences.put(currentNum, 1);
-            }
+            // Variant 2:
+            occurrences.putIfAbsent(Double.parseDouble(number), 0);
+            occurrences.put(Double.parseDouble(number), occurrences.get(Double.parseDouble(number)) + 1);
         }
 
         for (Double currentNum : occurrences.keySet()) {

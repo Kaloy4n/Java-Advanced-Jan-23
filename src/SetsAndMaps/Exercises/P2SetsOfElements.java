@@ -7,9 +7,15 @@ import java.util.Set;
 public class P2SetsOfElements {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        int sizeOf1stSet = Integer.parseInt(input.split(" ")[0]);
-        int sizeOf2ndSet = Integer.parseInt(input.split(" ")[1]);
+        // 1st way to solve it:
+        // String input = scanner.nextLine();
+        // int sizeOf1stSet = Integer.parseInt(input.split("\\s+")[0]);
+        // int sizeOf2ndSet = Integer.parseInt(input.split("\\s+")[1]);
+
+        // 2nd way to solve it
+        int sizeOf1stSet = scanner.nextInt();
+        int sizeOf2ndSet = scanner.nextInt();
+        scanner.nextLine();
 
         Set<Integer> firstSet = new LinkedHashSet<>();
         Set<Integer> secondSet = new LinkedHashSet<>();
@@ -35,7 +41,7 @@ public class P2SetsOfElements {
 //            }
 //        }
 
-        //2nd way to solve it:
+        // 2nd way to solve it:
         firstSet.retainAll(secondSet);
         //retainAll removes all elements of the first Set that are not present in the 2nd one.
         //in the 1st set remain only elements that are present in the 2nd -> only duplicated elements between the 2 sets remain.

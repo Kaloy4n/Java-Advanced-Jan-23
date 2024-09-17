@@ -8,10 +8,9 @@ public class _1_ParkingLot {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String input = scanner.nextLine();
-
         Set<String> cars = new LinkedHashSet<>();
 
+        String input = scanner.nextLine();
         while(!input.equals("END")) {
             String[] parts = input.split(", ");
             String direction = parts[0];

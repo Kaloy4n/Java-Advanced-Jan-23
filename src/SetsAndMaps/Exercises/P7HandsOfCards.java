@@ -1,86 +1,72 @@
 package SetsAndMaps.Exercises;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class P7HandsOfCards {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Map<String, List<Integer>> personValues = new LinkedHashMap<>();
+        Map<String, Set<String>> playersValues = new LinkedHashMap<>();
 
-        String input;
-        while(!(input = scanner.nextLine()).equals("JOKER")) {
-            String person = input.split(": ")[0];
+        String line = scanner.nextLine();
+        while (!"JOKER".equals(line)) {
+            String[] tokens = line.split(": ");
+            String playerName = tokens[0];
+            String[] cards = tokens[1].split(", ");
 
-            if (!personValues.containsKey(person)) {
-                personValues.put(person, new ArrayList<>());
-            } else {
-                personValues.put(person, personValues.get(person));
-            }
+            playersValues.computeIfAbsent(playerName, k -> new LinkedHashSet<>())
+                    .addAll(List.of(cards));
 
-            List<String> cards = Arrays.stream(input.split(": ")[1].split(", ")).collect(Collectors.toList());
-            Set<String> setOfCards = new LinkedHashSet<>();
-            setOfCards.addAll(cards);
+//            personValues.putIfAbsent(playerName, new HashSet<>());
+//            for (String card : cards) {
+//                personValues.get(playerName).add(card);
+//            }
 
-            for (String card : setOfCards) {
-                String powerSymbol;
-                String typeSymbol;
+            // io.vavr external library with better implementation of collections
 
-                if(card.length() == 2) {
-                    powerSymbol = card.substring(0,1);
-                    typeSymbol = card.substring(1,2);
-                } else {
-                    powerSymbol = card.substring(0,2);
-                    typeSymbol = String.valueOf(card.charAt(2));
-                }
-
-                int powerInt = convertPowerToInt(powerSymbol);
-                int typeInt = convertTypeToInt(typeSymbol);
-                int currentValue = powerInt * typeInt;
-
-                List<Integer> currentPersonValues = personValues.get(person);
-                if (!currentPersonValues.contains(currentValue)) {
-                    personValues.get(person).add(currentValue);
-                    personValues.put(person, personValues.get(person));
-                }
-            }
+            line = scanner.nextLine();
         }
 
-            personValues.forEach((person, valuesList) -> {
-                int sumOfValues = valuesList.stream().mapToInt(Integer::intValue).sum();
-                StringBuilder sb = new StringBuilder();
-                System.out.println(sb.append(person)
-                        .append(": ")
-                        .append(sumOfValues));
-            });
+        playersValues.forEach((key, value) -> {
+                    int points = calculatePoints(value);
+                    System.out.printf("%s: %d%n", key, points);
+                }
+        );
     }
 
-    private static int convertPowerToInt(String powerSymbol) {
-        switch (powerSymbol) {
-            case "J": powerSymbol = "11";
-                break;
-            case "Q": powerSymbol = "12";
-                break;
-            case "K": powerSymbol = "13";
-                break;
-            case "A": powerSymbol = "14";
-                break;
-        }
-        return Integer.parseInt(powerSymbol);
-    }
+    private static int calculatePoints(Set<String> cards) {
+        Map<String, Integer> powerMap = new HashMap<>(Map.of("1", 1,
+                                                            "2",2,
+                                                            "3",3,
+                                                            "4",4,
+                                                            "5",5,
+                                                            "6",6,
+                                                            "7",7,
+                                                            "8",8,
+                                                            "9",9,
+                                                            "10",10));
+        powerMap.put("J", 11);
+        powerMap.put("Q", 12);
+        powerMap.put("K", 13);
+        powerMap.put("A", 14);
 
-    private static int convertTypeToInt(String typeSymbol) {
-        switch (typeSymbol) {
-            case "S": typeSymbol = "4";
-                break;
-            case "H": typeSymbol = "3";
-                break;
-            case "D": typeSymbol = "2";
-                break;
-            case "C": typeSymbol = "1";
-                break;
+        Map<String, Integer> typeMap = Map.of("S", 4,
+                "H",3,
+                "D",2,
+                "C",1);
+
+        int points = 0;
+
+        for (String card : cards) {
+            String cardPower = card.substring(0, card.length() - 1);
+            String type = String.valueOf(card.charAt(card.length() - 1));
+
+            Integer power = powerMap.get(cardPower);
+            Integer typeValue = typeMap.get(type);
+            points += power * typeValue;
         }
-        return Integer.parseInt(typeSymbol);
+        return points;
     }
 }
+
+
