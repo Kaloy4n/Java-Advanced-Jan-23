@@ -8,7 +8,8 @@ import java.util.List;
 public class P1SumLines {
     public static void main(String[] args) throws IOException {
         //1. Get all rows from input.txt file
-        String pathToFile = "D:\\JAVA\\SoftUni\\Java Advanced Jan23\\Java Advanced Jan23\\src\\04. Java-Advanced-Files-and-Streams-Exercises-Resources\\input.txt";
+        String pathToFile = "C:\\Users\\user\\IdeaProjects\\Java-Advanced-Jan-23\\src\\" +
+                "StreamsFilesAndDirectories\\Resources\\input.txt";
         List<String> allLines = Files.readAllLines(Path.of(pathToFile));
 
 /*        2. For each row find the sum of the ASCII chars and print it

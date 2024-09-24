@@ -4,7 +4,7 @@ import java.io.File;
 
 public class P8GetFolderSize {
     public static void main(String[] args) {
-        String folderPath = "D:\\JAVA\\SoftUni\\Java Advanced Jan23\\Java Advanced Jan23\\src\\04. Java-Advanced-Files-and-Streams-Exercises-Resources\\Exercises Resources";
+        String folderPath = "C:\\Users\\user\\IdeaProjects\\Java-Advanced-Jan-23\\src\\StreamsFilesAndDirectories\\Resources\\ForExercises\\Exercises Resources";
         File folder = new File(folderPath);
         long size = folderSize(folder);
         System.out.println("Folder size: " + size);
