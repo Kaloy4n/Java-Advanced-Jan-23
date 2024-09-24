@@ -1,8 +1,7 @@
 package SetsAndMaps.Exercises;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+
 
 public class P6FixEmails {
     public static void main(String[] args) {
@@ -12,7 +11,7 @@ public class P6FixEmails {
 
         Map<String, String> emailsData = new LinkedHashMap<>();
 
-        while(!name.equals("stop")) {
+        while(!"stop".equals(name)) {
             String email = scanner.nextLine();
             emailsData.put(name, email);
             name = scanner.nextLine();

@@ -13,7 +13,7 @@ public class P6WordCount {
     public static void main(String[] args) throws IOException {
         // Step 1.Find which words to count
         // words.txt contains words that we need to search for
-        String basePath = "D:\\JAVA\\SoftUni\\Java Advanced Jan23\\Java Advanced Jan23\\src\\04. Java-Advanced-Files-and-Streams-Exercises-Resources\\";
+        String basePath = "C:\\Users\\user\\IdeaProjects\\Java-Advanced-Jan-23\\src\\StreamsFilesAndDirectories\\Resources\\ForExercises";
         String pathWords = basePath + "words.txt";
         List<String> allLinesWithWords = Files.readAllLines(Path.of(pathWords));
 

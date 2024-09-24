@@ -10,7 +10,7 @@ public class P5LineNumbers {
     public static void main(String[] args) throws IOException {
         //1.Read all rows from file inputLineNumbers.txt
         //2. Iterate through each row and write in a new file with a next number in front
-        String basePath = "D:\\JAVA\\SoftUni\\Java Advanced Jan23\\Java Advanced Jan23\\src\\04. Java-Advanced-Files-and-Streams-Exercises-Resources\\";
+        String basePath = "C:\\Users\\user\\IdeaProjects\\Java-Advanced-Jan-23\\src\\StreamsFilesAndDirectories\\Resources\\ForExercises";
         String inputPath = basePath + "inputLineNumbers.txt";
         String outputPath = basePath + "output.txt";
 
