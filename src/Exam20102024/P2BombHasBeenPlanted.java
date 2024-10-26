@@ -25,8 +25,6 @@ public class P2BombHasBeenPlanted {
                 }
             }
         }
-        int initialCounterTerrRow = counterTerrRow;
-        int initialCounterTerrCol = counterTerrCol;
 
         // 16 seconds to defuse the bomb
         int remainingTime = 16;
@@ -35,57 +33,59 @@ public class P2BombHasBeenPlanted {
         boolean bombExploded = false;
         int neededTimeForDefuse = 0;
 
-        while (sc.hasNextLine()) {
+        label:
+        while (true) {
+            remainingTime--;
             String command = sc.nextLine();
-
             switch (command) {
                 case "up" -> {
-                    if (counterTerrRow > 0) counterTerrRow--;
-                    remainingTime--;
+                    if (counterTerrRow > 0) {
+                        counterTerrRow--;
+                    }
                 }
                 case "down" -> {
-                    if (counterTerrRow < rows - 1) counterTerrRow++;
-                    remainingTime--;
+                    if (counterTerrRow < rows - 1) {
+                        counterTerrRow++;
+                    }
                 }
                 case "left" -> {
-                    if (counterTerrCol > 0) counterTerrCol--;
-                    remainingTime--;
+                    if (counterTerrCol > 0) {
+                        counterTerrCol--;
+                    }
                 }
                 case "right" -> {
-                    if (counterTerrCol < cols - 1) counterTerrCol++;
-                    remainingTime--;
+                    if (counterTerrCol < cols - 1) {
+                        counterTerrCol++;
+                    }
                 }
                 case "defuse" -> {
                     if (counterTerrRow == bombRow && counterTerrCol == bombCol) {
-                        if (remainingTime >= 4) {
+                        remainingTime -= 3;
+                        if (remainingTime >= 0) {
                             bombDefused = true;
                             map[bombRow][bombCol] = 'D';
-                            remainingTime -= 4;
+                            break label;
                         } else {
                             bombExploded = true;
                             map[bombRow][bombCol] = 'X';
-                            neededTimeForDefuse = 4 - remainingTime;
+                            neededTimeForDefuse = Math.abs(remainingTime);
                             remainingTime = 0;
+                            break label;
                         }
                     } else {
-                        remainingTime -= 2;
+                        remainingTime--;
                     }
                 }
-            }
-
-            if (remainingTime <= 0) {
-                bombExploded = true;
-                break;
             }
 
             if (map[counterTerrRow][counterTerrCol] == 'T') {
                 counterTerrKilled = true;
                 map[counterTerrRow][counterTerrCol] = '*';
-                map[initialCounterTerrRow][initialCounterTerrCol] = 'C';
                 break;
             }
 
-            if (bombDefused) {
+            if (remainingTime <= 0) {
+                bombExploded = true;
                 break;
             }
         }
@@ -106,3 +106,4 @@ public class P2BombHasBeenPlanted {
         }
     }
 }
+
